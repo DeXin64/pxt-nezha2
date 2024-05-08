@@ -72,10 +72,20 @@ enum Unit {
     irch = 2
 }
 //% weight=100 color=#008C8C block="NEHZAV2" blockId="NEHZAV2" icon="\uf48b"
+const iicWaitTime = 0
 namespace NEHZAV2 {
     let i2cAddr: number = 0x10;
     let setMotorCombination = 0;
     let getMotorCombinationSpeed = 0;
+    let buf = pins.createBuffer(7)
+    buf[0] = 0xFF;
+    buf[1] = 0x00;
+    buf[2] = 0x00;
+    buf[3] = 0x00;
+    buf[4] = 0x00;
+    buf[5] = 0xF5;
+    buf[6] = 0x00;
+    pins.i2cWriteBuffer(i2cAddr, buf);
     //% group="Basic functions"
     //% block="set nehza %MotorPostion %MovementDirection %speed  %SportsMode"
     //% speed.min=0  speed.max=360
@@ -90,7 +100,6 @@ namespace NEHZAV2 {
         buf[5] = MotorFunction;
         buf[6] = (speed >> 0) & 0XFF;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(4)
     }
 
     //% group="Basic functions"
@@ -103,29 +112,42 @@ namespace NEHZAV2 {
         current_angle = readServoAbsolutePostion(motor)//是要获取的
         switch (modePostion) {
             case 1:
-                let buf = pins.createBuffer(7)
-                buf[0] = 0xFF;
-                buf[1] = motor;//���λ��
-                buf[2] = modePostion;//
-                buf[3] = 0x66;
-                buf[4] = (speed >> 8) & 0XFF;
-                buf[5] = 0xF5;
-                buf[6] = (speed >> 0) & 0XFF;
-                pins.i2cWriteBuffer(i2cAddr, buf);
-                basic.pause(4)
-                break;
+                // let buf = pins.createBuffer(7)
+                // buf[0] = 0xFF;
+                // buf[1] = motor;//���λ��
+                // buf[2] = modePostion;//
+                // buf[3] = 0x66;
+                // buf[4] = (speed >> 8) & 0XFF;
+                // buf[5] = 0xF5;
+                // buf[6] = (speed >> 0) & 0XFF;
+                // pins.i2cWriteBuffer(i2cAddr, buf);
+                // break;
+                let angle_diff_a = (target_angle - current_angle + 360) % 360
+                let angle_diff_b = (current_angle - target_angle + 360) % 360
+                if (angle_diff_a < 1 || angle_diff_b < 1) {
+                    break;
+                }
+                if (angle_diff_a < angle_diff_b) {
+                    NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_a, SportsMode.degree)
+                }
+                else {
+                    NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_b, SportsMode.degree)
+                }
+
             case 2:
                 //正转
                 angle_diff = (target_angle - current_angle + 360) % 360
                 NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff, SportsMode.degree)
+
                 break;
             case 3:
                 //反转
                 angle_diff = (current_angle - target_angle + 360) % 360
                 NEHZAV2.Motorspeed(motor, MovementDirection.ccw, angle_diff, SportsMode.degree)
                 break;
-        }
 
+        }
+        // return angle_diff
 
     }
 
@@ -143,7 +165,6 @@ namespace NEHZAV2 {
         buf[5] = 0xF5;
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(4)
     }
 
     //% group="Basic functions"
@@ -160,7 +181,6 @@ namespace NEHZAV2 {
         buf[5] = 0xF5;
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(4)
     }
 
     //% group="Basic functions"
@@ -177,7 +197,6 @@ namespace NEHZAV2 {
         buf[5] = 0xF5;
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(4)
     }
 
     //% group="Basic functions"
@@ -194,14 +213,12 @@ namespace NEHZAV2 {
         buf[5] = 0xF5; // ????????  
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(50); // ????  
 
         // ??4?????  
         ServoSpeedArr[0] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         ServoSpeedArr[1] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         ServoSpeedArr[2] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         ServoSpeedArr[3] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-        basic.pause(10); // ???????????????  
 
 
         let ServoSpeed = (ServoSpeedArr[3] << 24) | (ServoSpeedArr[2] << 16) | (ServoSpeedArr[1] << 8) | (ServoSpeedArr[0]);
@@ -230,12 +247,10 @@ namespace NEHZAV2 {
         buf[5] = 0xF5;
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(50);
         ServoSpeed1Arr[0] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         ServoSpeed1Arr[1] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
         Servo1Speed = Servo1Speed / 10
-        basic.pause(10);
         return Servo1Speed;
     }
 
@@ -463,7 +478,7 @@ namespace NEHZAV2 {
                         break
                 }
         }
-        basic.pause(120)
+        basic.pause(120)//120
         if (speed > 0) {
             switch (setMotorCombination) {
                 case 1:
@@ -750,11 +765,9 @@ namespace NEHZAV2 {
         buf[5] = 0x00; // ????????  
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(50); // ????  
 
         // ??4?????  
         versionH = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-        basic.pause(10); // ???????????????  
 
         return ("V" + convertToText(1) + "." + convertToText(0) + "." + convertToText(versionH))
     }
