@@ -235,7 +235,6 @@ namespace NEHZAV2 {
     //% weight=320
     //%block="get %MotorPostion servo of speed"
     export function readServoAbsoluteSpeed(motor: MotorPostion): number {
-        let ServoAbsolutePostion: number
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
         buf[1] = motor;
@@ -244,6 +243,7 @@ namespace NEHZAV2 {
         buf[4] = 0x00;
         buf[5] = 0xF5;
         buf[6] = 0x00;
+        basic.pause(2);
         pins.i2cWriteBuffer(i2cAddr, buf);
         let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
@@ -255,8 +255,6 @@ namespace NEHZAV2 {
     //% weight=320
     //%block="servo %MotorPostion Postion Reset"
     export function servoPostionReset(motor: MotorPostion): void {
-        let ServoAbsolutePostion: number
-        let ServoSpeed1Arr = pins.createBuffer(2);
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
         buf[1] = motor;
