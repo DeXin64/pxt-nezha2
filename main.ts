@@ -236,7 +236,6 @@ namespace NEHZAV2 {
     //%block="get %MotorPostion servo of speed"
     export function readServoAbsoluteSpeed(motor: MotorPostion): number {
         let ServoAbsolutePostion: number
-        let ServoSpeed1Arr = pins.createBuffer(2);
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
         buf[1] = motor;
@@ -246,8 +245,7 @@ namespace NEHZAV2 {
         buf[5] = 0xF5;
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        ServoSpeed1Arr[0] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-        ServoSpeed1Arr[1] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
+        let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
         Servo1Speed = Servo1Speed / 10
         return Servo1Speed;
