@@ -215,7 +215,7 @@ namespace NEHZAV2 {
         pins.i2cWriteBuffer(i2cAddr, buf);
 
         // ??4?????  
-        basic.pause(1);
+        basic.pause(2);
         ServoSpeedArr[0] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         ServoSpeedArr[1] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         ServoSpeedArr[2] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
@@ -248,7 +248,7 @@ namespace NEHZAV2 {
         buf[5] = 0xF5;
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(1);
+        basic.pause(2);
         ServoSpeed1Arr[0] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         ServoSpeed1Arr[1] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
