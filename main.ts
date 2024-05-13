@@ -203,7 +203,6 @@ namespace NEHZAV2 {
     //% weight=320
     //%block="get %MotorPostion servo of postion"
     export function readServoAbsolutePostion(motor: MotorPostion): number {
-        let ServoSpeedArr = pins.createBuffer(4);
         let buf = pins.createBuffer(7);
         buf[0] = 0xFF;
         buf[1] = motor;
@@ -213,13 +212,8 @@ namespace NEHZAV2 {
         buf[5] = 0xF5; // ????????  
         buf[6] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-
-        // ??4?????  
-        ServoSpeedArr[0] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-        ServoSpeedArr[1] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-        ServoSpeedArr[2] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-        ServoSpeedArr[3] = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-
+        basic.pause(1);
+        let ServoSpeedArr = pins.i2cReadBuffer(i2cAddr, 4);
         let ServoSpeed = (ServoSpeedArr[3] << 24) | (ServoSpeedArr[2] << 16) | (ServoSpeedArr[1] << 8) | (ServoSpeedArr[0]);
         if ((ServoSpeed << 31) != 1) {
             ServoSpeed = ((ServoSpeed & 0x0fffff) / 10) % 360
@@ -243,8 +237,8 @@ namespace NEHZAV2 {
         buf[4] = 0x00;
         buf[5] = 0xF5;
         buf[6] = 0x00;
-        basic.pause(2);
         pins.i2cWriteBuffer(i2cAddr, buf);
+        basic.pause(1);
         let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
         Servo1Speed = Servo1Speed / 10

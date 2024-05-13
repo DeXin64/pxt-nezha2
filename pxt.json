@@ -1,6 +1,6 @@
 {
     "name": "pxt-nezha",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "The micro:bit extension board Nezha(哪吒) with RJ11 connection port by ELECFREAKS Co.ltd",
     "dependencies": {
         "core": "*",
