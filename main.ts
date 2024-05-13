@@ -79,12 +79,15 @@ namespace NEHZAV2 {
     let getMotorCombinationSpeed = 0;
     let buf = pins.createBuffer(7)
     buf[0] = 0xFF;
-    buf[1] = 0x00;
+    buf[1] = 0xF9;
     buf[2] = 0x00;
     buf[3] = 0x00;
     buf[4] = 0x00;
-    buf[5] = 0xF5;
-    buf[6] = 0x00;
+    buf[5] = 0x00;
+    buf[6] = 0xF5;
+    buf[7] = 0x00;
+
+
     pins.i2cWriteBuffer(i2cAddr, buf);
     //% group="Basic functions"
     //% block="set nehza %MotorPostion %MovementDirection %speed  %SportsMode"
@@ -93,12 +96,13 @@ namespace NEHZAV2 {
     export function Motorspeed(motor: MotorPostion, direction: MovementDirection, speed: number, MotorFunction: SportsMode): void {
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
-        buf[1] = motor;
-        buf[2] = direction;
-        buf[3] = 0x70;
-        buf[4] = (speed >> 8) & 0XFF;
-        buf[5] = MotorFunction;
-        buf[6] = (speed >> 0) & 0XFF;
+        buf[1] = 0xF9;
+        buf[2] = motor;
+        buf[3] = direction;
+        buf[4] = 0x70;
+        buf[5] = (speed >> 8) & 0XFF;
+        buf[6] = MotorFunction;
+        buf[7] = (speed >> 0) & 0XFF;
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -158,12 +162,13 @@ namespace NEHZAV2 {
     export function nezha2MotorStart(motor: MotorPostion, direction: MovementDirection): void {
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
-        buf[1] = motor;
-        buf[2] = direction;
-        buf[3] = 0x5E;
-        buf[4] = 0x00;
-        buf[5] = 0xF5;
-        buf[6] = 0x00;
+        buf[1] = 0xF9;
+        buf[2] = motor;
+        buf[3] = direction;
+        buf[4] = 0x5E;
+        buf[5] = 0x00;
+        buf[6] = 0xF5;
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -174,12 +179,13 @@ namespace NEHZAV2 {
     export function nezha2MotorStop(motor: MotorPostion,): void {
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
-        buf[1] = motor;
-        buf[2] = 0x00;
-        buf[3] = 0x5F;
-        buf[4] = 0x00;
-        buf[5] = 0xF5;
-        buf[6] = 0x00;
+        buf[1] = 0xF9;
+        buf[2] = motor;
+        buf[3] = 0x00;
+        buf[4] = 0x5F;
+        buf[5] = 0x00;
+        buf[6] = 0xF5;
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -190,12 +196,13 @@ namespace NEHZAV2 {
     export function nezha2MotorSpeedCtrol(motor: MotorPostion, direction: MovementDirection, speed: number): void {
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
-        buf[1] = motor;
-        buf[2] = direction;
-        buf[3] = 0x60;
-        buf[4] = speed;
-        buf[5] = 0xF5;
-        buf[6] = 0x00;
+        buf[1] = 0xF9;
+        buf[2] = motor;
+        buf[3] = direction;
+        buf[4] = 0x60;
+        buf[5] = speed;
+        buf[6] = 0xF5;
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -205,12 +212,13 @@ namespace NEHZAV2 {
     export function readServoAbsolutePostion(motor: MotorPostion): number {
         let buf = pins.createBuffer(7);
         buf[0] = 0xFF;
-        buf[1] = motor;
-        buf[2] = 0x00;
-        buf[3] = 0x46; // ????????  
-        buf[4] = 0x00;
-        buf[5] = 0xF5; // ????????  
-        buf[6] = 0x00;
+        buf[1] = 0xF9;
+        buf[2] = motor;
+        buf[3] = 0x00;
+        buf[4] = 0x46; // ????????  
+        buf[5] = 0x00;
+        buf[6] = 0xF5; // ????????  
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
         basic.pause(1);
         let ServoSpeedArr = pins.i2cReadBuffer(i2cAddr, 4);
@@ -231,12 +239,14 @@ namespace NEHZAV2 {
     export function readServoAbsoluteSpeed(motor: MotorPostion): number {
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
-        buf[1] = motor;
-        buf[2] = 0x00;
-        buf[3] = 0x47;
-        buf[4] = 0x00;
-        buf[5] = 0xF5;
-        buf[6] = 0x00;
+        buf[1] = 0xF9;
+
+        buf[2] = motor;
+        buf[3] = 0x00;
+        buf[4] = 0x47;
+        buf[5] = 0x00;
+        buf[6] = 0xF5;
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
         basic.pause(1);
         let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
@@ -251,12 +261,13 @@ namespace NEHZAV2 {
     export function servoPostionReset(motor: MotorPostion): void {
         let buf = pins.createBuffer(7)
         buf[0] = 0xFF;
-        buf[1] = motor;
-        buf[2] = 0x00;
-        buf[3] = 0x1D;
-        buf[4] = 0x00;
-        buf[5] = 0xF5;
-        buf[6] = 0x00;
+        buf[1] = 0xF9;
+        buf[2] = motor;
+        buf[3] = 0x00;
+        buf[4] = 0x1D;
+        buf[5] = 0x00;
+        buf[6] = 0xF5;
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -748,11 +759,14 @@ namespace NEHZAV2 {
     export function test(speed: number): void {
         let buf = pins.createBuffer(6)
         buf[0] = 0xFF;
-        buf[1] = 0x01;//���λ��
-        buf[2] = 0x00;//(speed >> 8) & 0xff;/
-        buf[3] = 0X99;//TEST MODE
-        buf[4] = (speed >> 8) & 0xff;//���λ��        
-        buf[5] = (speed >> 0) & 0xff;//���λ��
+        buf[1] = 0xF9;
+
+        buf[2] = 0x01;//���λ��
+        buf[3] = 0x00;//(speed >> 8) & 0xff;/
+        buf[4] = 0X99;//TEST MODE
+        buf[5] = (speed >> 8) & 0xff;//���λ��        
+        buf[6] = (speed >> 0) & 0xff;//���λ��
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -763,12 +777,13 @@ namespace NEHZAV2 {
         let versionH, versionZ, versionL;
         let buf = pins.createBuffer(7);
         buf[0] = 0xFF;
-        buf[1] = 0x00;
+        buf[1] = 0xF9;
         buf[2] = 0x00;
-        buf[3] = 0x88; // ????????  
-        buf[4] = 0x00;
-        buf[5] = 0x00; // ????????  
-        buf[6] = 0x00;
+        buf[3] = 0x00;
+        buf[4] = 0x88; // ????????  
+        buf[5] = 0x00;
+        buf[6] = 0x00; // ????????  
+        buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
 
         // ??4?????  
