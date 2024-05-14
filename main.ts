@@ -225,8 +225,7 @@ namespace NEHZAV2 {
         while (position < 0) {
             position += 3600;
         }
-        position /= 10;
-        return position.toFixed(1);
+        return position * 0.1;
     }
 
     //% group="Basic functions"
