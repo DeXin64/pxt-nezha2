@@ -225,7 +225,7 @@ namespace NEHZAV2 {
         while (position < 0) {
             position += 3600;
         }
-        return position * 0.1;
+        return (position % 3600) * 0.1;
     }
 
     //% group="Basic functions"
