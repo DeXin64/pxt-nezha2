@@ -220,9 +220,8 @@ namespace NEHZAV2 {
         buf[7] = 0x00;
         basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(2);
+        basic.pause(3);
         let arr = pins.i2cReadBuffer(i2cAddr, 4);
-        basic.pause(1);
         let position = (arr[3] << 24) | (arr[2] << 16) | (arr[1] << 8) | (arr[0]);
         while (position < 0) {
             position += 3600;
@@ -246,9 +245,8 @@ namespace NEHZAV2 {
         buf[7] = 0x00;
         basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(2);
+        basic.pause(3);
         let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
-        basic.pause(1);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
         return Math.floor(Servo1Speed * 0.0926);
     }
