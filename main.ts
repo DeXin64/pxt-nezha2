@@ -87,7 +87,7 @@ namespace NEHZAV2 {
     buf[6] = 0xF5;
     buf[7] = 0x00;
     pins.i2cWriteBuffer(i2cAddr, buf);
-    
+
     //% group="Basic functions"
     //% block="set nehza %MotorPostion %MovementDirection %speed  %SportsMode"
     //% speed.min=0  speed.max=360
@@ -757,21 +757,18 @@ namespace NEHZAV2 {
     //% weight=320
     //%block="get %MotorPostion servo of postion"
     export function readVersion(): string {
-        let versionH, versionZ, versionL;
         let buf = pins.createBuffer(8);
         buf[0] = 0xFF;
         buf[1] = 0xF9;
         buf[2] = 0x00;
         buf[3] = 0x00;
-        buf[4] = 0x88; // ????????  
+        buf[4] = 0x88;
         buf[5] = 0x00;
-        buf[6] = 0x00; // ????????  
+        buf[6] = 0x00;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-
-        // ??4?????  
-        versionH = pins.i2cReadNumber(i2cAddr, NumberFormat.UInt8LE, false);
-
-        return ("V" + convertToText(1) + "." + convertToText(0) + "." + convertToText(versionH))
+        // 读取版本号
+        let buf = pins.i2cReadBuffer(i2cAddr, 4);
+        return `V${buf[1]}.${buf[2]}.${buf3}`;
     }
 }
