@@ -219,7 +219,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5; // ????????  
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(2);
+        basic.pause(3);
         let ServoSpeedArr = pins.i2cReadBuffer(i2cAddr, 4);
         let ServoSpeed = (ServoSpeedArr[3] << 24) | (ServoSpeedArr[2] << 16) | (ServoSpeedArr[1] << 8) | (ServoSpeedArr[0]);
         if ((ServoSpeed << 31) != 1) {
