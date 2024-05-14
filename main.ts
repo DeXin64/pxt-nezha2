@@ -86,6 +86,7 @@ namespace NEHZAV2 {
     buf[5] = 0x00;
     buf[6] = 0xF5;
     buf[7] = 0x00;
+    basic.pause(1);
     pins.i2cWriteBuffer(i2cAddr, buf);
 
     //% group="Basic functions"
@@ -102,6 +103,7 @@ namespace NEHZAV2 {
         buf[5] = (speed >> 8) & 0XFF;
         buf[6] = MotorFunction;
         buf[7] = (speed >> 0) & 0XFF;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -115,16 +117,6 @@ namespace NEHZAV2 {
         current_angle = readServoAbsolutePostion(motor)//是要获取的
         switch (modePostion) {
             case 1:
-                // let buf = pins.createBuffer(7)
-                // buf[0] = 0xFF;
-                // buf[1] = motor;//���λ��
-                // buf[2] = modePostion;//
-                // buf[3] = 0x66;
-                // buf[4] = (speed >> 8) & 0XFF;
-                // buf[5] = 0xF5;
-                // buf[6] = (speed >> 0) & 0XFF;
-                // pins.i2cWriteBuffer(i2cAddr, buf);
-                // break;
                 let angle_diff_a = (target_angle - current_angle + 360) % 360
                 let angle_diff_b = (current_angle - target_angle + 360) % 360
                 if (angle_diff_a < 1 || angle_diff_b < 1) {
@@ -168,6 +160,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -185,6 +178,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -202,6 +196,7 @@ namespace NEHZAV2 {
         buf[5] = speed;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -264,6 +259,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -763,6 +759,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0x00;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
         // 读取版本号
         let version = pins.i2cReadBuffer(i2cAddr, 4);
