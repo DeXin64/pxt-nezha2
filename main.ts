@@ -768,7 +768,7 @@ namespace NEHZAV2 {
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
         // 读取版本号
-        let buf = pins.i2cReadBuffer(i2cAddr, 4);
-        return `V${buf[1]}.${buf[2]}.${buf3}`;
+        let version = pins.i2cReadBuffer(i2cAddr, 4);
+        return `V${version[1]}.${version[2]}.${version[3]}`;
     }
 }
