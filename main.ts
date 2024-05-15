@@ -86,7 +86,6 @@ namespace NEHZAV2 {
     buf[5] = 0x00;
     buf[6] = 0xF5;
     buf[7] = 0x00;
-    basic.pause(1);
     pins.i2cWriteBuffer(i2cAddr, buf);
 
     //% group="Basic functions"
@@ -103,7 +102,6 @@ namespace NEHZAV2 {
         buf[5] = (speed >> 8) & 0XFF;
         buf[6] = MotorFunction;
         buf[7] = (speed >> 0) & 0XFF;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -160,7 +158,6 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -178,7 +175,6 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -196,7 +192,6 @@ namespace NEHZAV2 {
         buf[5] = speed;
         buf[6] = 0xF5;
         buf[7] = 0x00;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -213,9 +208,8 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5; // ????????  
         buf[7] = 0x00;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(5);
+        basic.pause(3);
         let arr = pins.i2cReadBuffer(i2cAddr, 4);
         let position = (arr[3] << 24) | (arr[2] << 16) | (arr[1] << 8) | (arr[0]);
         while (position < 0) {
@@ -238,9 +232,8 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(5);
+        basic.pause(3);
         let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
         return Math.floor(Servo1Speed * 0.0926);
@@ -259,7 +252,6 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -759,7 +751,6 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0x00;
         buf[7] = 0x00;
-        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
         // 读取版本号
         let version = pins.i2cReadBuffer(i2cAddr, 4);
