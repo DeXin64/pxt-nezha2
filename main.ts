@@ -102,6 +102,7 @@ namespace NEHZAV2 {
         buf[5] = (speed >> 8) & 0XFF;
         buf[6] = MotorFunction;
         buf[7] = (speed >> 0) & 0XFF;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -158,6 +159,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -175,6 +177,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -192,6 +195,7 @@ namespace NEHZAV2 {
         buf[5] = speed;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -208,6 +212,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5; // ????????  
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
         basic.pause(3);
         let arr = pins.i2cReadBuffer(i2cAddr, 4);
@@ -232,6 +237,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
         basic.pause(3);
         let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
@@ -252,6 +258,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0xF5;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
     }
 
@@ -751,6 +758,7 @@ namespace NEHZAV2 {
         buf[5] = 0x00;
         buf[6] = 0x00;
         buf[7] = 0x00;
+        basic.pause(1);
         pins.i2cWriteBuffer(i2cAddr, buf);
         // 读取版本号
         let version = pins.i2cReadBuffer(i2cAddr, 4);
