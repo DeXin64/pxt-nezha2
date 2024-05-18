@@ -103,7 +103,7 @@ namespace NEHZAV2 {
         buf[6] = MotorFunction;
         buf[7] = (speed >> 0) & 0XFF;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(1);
+        // basic.pause(1);
     }
 
     //% group="Basic functions"
@@ -160,7 +160,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(1);
+        // basic.pause(1);
     }
 
     //% group="Basic functions"
@@ -178,7 +178,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(1);
+        // basic.pause(1);
     }
 
     //% group="Basic functions"
@@ -196,7 +196,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(1);
+        // basic.pause(1);
     }
 
     //% group="Basic functions"
@@ -257,7 +257,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(1);
+        // basic.pause(1);
     }
 
     //% group="Application functions"
