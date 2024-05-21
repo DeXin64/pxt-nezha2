@@ -121,7 +121,7 @@ namespace NEHZAV2 {
         buf[1] = 0xF9;
         buf[2] = motor;
         buf[3] = 0x00;
-        buf[4] = 0x70;
+        buf[4] = 0x5D;
         buf[5] = (target_angle >> 8) & 0XFF;
         buf[6] = modePostion;
         buf[7] = (target_angle >> 0) & 0XFF;
