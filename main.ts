@@ -116,7 +116,7 @@ namespace NEHZAV2 {
             target_angle += 360
         }
         target_angle %= 360
-        baisc.pause(3);
+        basic.pause(3);
         let current_angle = readServoAbsolutePostion(motor) // 获取电机目前角度
         let angle_diff_a = (target_angle - current_angle + 360) % 360
         let angle_diff_b = (current_angle - target_angle + 360) % 360
