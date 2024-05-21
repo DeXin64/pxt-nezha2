@@ -108,12 +108,15 @@ namespace NEHZAV2 {
 
     //% group="Basic functions"
     //% weight=140
-    //% block="nehza-motor goToAbsolutePosition %MotorPostion mode %ServoMotionMode anagle to %speed "
-    //% speed.min=0  speed.max=360
-    export function goToAbsolutePosition(motor: MotorPostion, modePostion: ServoMotionMode, speed: number): void {
-        let current_angle, target_angle, angle_diff;
-        target_angle = speed
-        current_angle = readServoAbsolutePostion(motor)//是要获取的
+    //% block="nehza-motor goToAbsolutePosition %MotorPostion mode %ServoMotionMode anagle to %target_angle "
+    //% target_angle.min=0  target_angle.max=360
+    export function goToAbsolutePosition(motor: MotorPostion, modePostion: ServoMotionMode, target_angle: number): void {
+        let current_angle, angle_diff;
+        while (target_angle < 0) {
+            target_angle += 360
+        }
+        target_angle %= 360
+        current_angle = readServoAbsolutePostion(motor) // 获取电机目前角度
         switch (modePostion) {
             case 1:
                 let angle_diff_a = (target_angle - current_angle + 360) % 360
@@ -127,12 +130,11 @@ namespace NEHZAV2 {
                 else {
                     NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_b, SportsMode.degree)
                 }
-
+                break;
             case 2:
                 //正转
                 angle_diff = (target_angle - current_angle + 360) % 360
                 NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff, SportsMode.degree)
-
                 break;
             case 3:
                 //反转
