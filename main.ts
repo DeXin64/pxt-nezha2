@@ -103,7 +103,7 @@ namespace NEHZAV2 {
         buf[6] = MotorFunction;
         buf[7] = (speed >> 0) & 0XFF;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        // basic.pause(1);
+
     }
 
     //% group="Basic functions"
@@ -111,35 +111,34 @@ namespace NEHZAV2 {
     //% block="nehza-motor goToAbsolutePosition %MotorPostion mode %ServoMotionMode anagle to %target_angle "
     //% target_angle.min=0  target_angle.max=360
     export function goToAbsolutePosition(motor: MotorPostion, modePostion: ServoMotionMode, target_angle: number): void {
-        let current_angle, angle_diff;
+
         while (target_angle < 0) {
             target_angle += 360
         }
         target_angle %= 360
-        current_angle = readServoAbsolutePostion(motor) // 获取电机目前角度
+        baisc.pause(3);
+        let current_angle = readServoAbsolutePostion(motor) // 获取电机目前角度
+        let angle_diff_a = (target_angle - current_angle + 360) % 360
+        let angle_diff_b = (current_angle - target_angle + 360) % 360
+        if (angle_diff_a < 1 || angle_diff_b < 1) {
+            // 如果角度误差小于1，直接略过不转动
+            return;
+        }
         switch (modePostion) {
             case 1:
-                let angle_diff_a = (target_angle - current_angle + 360) % 360
-                let angle_diff_b = (current_angle - target_angle + 360) % 360
-                if (angle_diff_a < 1 || angle_diff_b < 1) {
-                    break;
-                }
                 if (angle_diff_a < angle_diff_b) {
                     NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_a, SportsMode.degree)
-                }
-                else {
-                    NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_b, SportsMode.degree)
+                } else {
+                    NEHZAV2.Motorspeed(motor, MovementDirection.ccw, angle_diff_b, SportsMode.degree)
                 }
                 break;
             case 2:
                 //正转
-                angle_diff = (target_angle - current_angle + 360) % 360
-                NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff, SportsMode.degree)
+                NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_a, SportsMode.degree)
                 break;
             case 3:
                 //反转
-                angle_diff = (current_angle - target_angle + 360) % 360
-                NEHZAV2.Motorspeed(motor, MovementDirection.ccw, angle_diff, SportsMode.degree)
+                NEHZAV2.Motorspeed(motor, MovementDirection.ccw, angle_diff_b, SportsMode.degree)
                 break;
 
         }
@@ -162,7 +161,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        // basic.pause(1);
+
     }
 
     //% group="Basic functions"
@@ -180,7 +179,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        // basic.pause(1);
+
     }
 
     //% group="Basic functions"
@@ -198,7 +197,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        // basic.pause(1);
+
     }
 
     //% group="Basic functions"
@@ -215,7 +214,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5; // ????????  
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(10);
+        basic.pause(4);
         let arr = pins.i2cReadBuffer(i2cAddr, 4);
         let position = (arr[3] << 24) | (arr[2] << 16) | (arr[1] << 8) | (arr[0]);
         while (position < 0) {
@@ -259,7 +258,7 @@ namespace NEHZAV2 {
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
-        // basic.pause(1);
+
     }
 
     //% group="Application functions"
