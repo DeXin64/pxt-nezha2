@@ -116,33 +116,18 @@ namespace NEHZAV2 {
             target_angle += 360
         }
         target_angle %= 360
-        basic.pause(3);
-        let current_angle = readServoAbsolutePostion(motor) // 获取电机目前角度
-        let angle_diff_a = (target_angle - current_angle + 360) % 360
-        let angle_diff_b = (current_angle - target_angle + 360) % 360
-        if (angle_diff_a < 1 || angle_diff_b < 1) {
-            // 如果角度误差小于1，直接略过不转动
-            return;
-        }
-        switch (modePostion) {
-            case 1:
-                if (angle_diff_a < angle_diff_b) {
-                    NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_a, SportsMode.degree)
-                } else {
-                    NEHZAV2.Motorspeed(motor, MovementDirection.ccw, angle_diff_b, SportsMode.degree)
-                }
-                break;
-            case 2:
-                //正转
-                NEHZAV2.Motorspeed(motor, MovementDirection.cw, angle_diff_a, SportsMode.degree)
-                break;
-            case 3:
-                //反转
-                NEHZAV2.Motorspeed(motor, MovementDirection.ccw, angle_diff_b, SportsMode.degree)
-                break;
+        let buf = pins.createBuffer(8)
+        buf[0] = 0xFF;
+        buf[1] = 0xF9;
+        buf[2] = motor;
+        buf[3] = 0x00;
+        buf[4] = 0x70;
+        buf[5] = (target_angle >> 8) & 0XFF;
+        buf[6] = modePostion;
+        buf[7] = (target_angle >> 0) & 0XFF;
+        pins.i2cWriteBuffer(i2cAddr, buf);
+        basic.pause(5);
 
-        }
-        // return angle_diff
 
     }
 
