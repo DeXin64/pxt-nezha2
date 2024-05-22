@@ -169,7 +169,7 @@ namespace NEHZAV2 {
 
     //% group="Basic functions"
     //% weight=140
-    //% block="nehza-motor Crtol %MotorPostion speed %MovementDirection speed to %speed "
+    //% block="nehza-motor Crtol %MotorPostion speed %MovementDirection speed to %speed \\%"
     //% speed.min=0  speed.max=100
     export function nezha2MotorSpeedCtrol(motor: MotorPostion, direction: MovementDirection, speed: number): void {
         let buf = pins.createBuffer(8)
@@ -187,7 +187,7 @@ namespace NEHZAV2 {
 
     //% group="Basic functions"
     //% weight=320
-    //%block="get %MotorPostion servo of postion"
+    //%block="get %MotorPostion servo of postion (Degree)"
     export function readServoAbsolutePostion(motor: MotorPostion): number {
         let buf = pins.createBuffer(8);
         buf[0] = 0xFF;
@@ -210,7 +210,7 @@ namespace NEHZAV2 {
 
     //% group="Basic functions"
     //% weight=320
-    //%block="get %MotorPostion servo of speed"
+    //%block="get %MotorPostion servo of speed (RPM)"
     export function readServoAbsoluteSpeed(motor: MotorPostion): number {
         let buf = pins.createBuffer(8)
         buf[0] = 0xFF;
@@ -744,7 +744,7 @@ namespace NEHZAV2 {
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
         // 读取版本号
-        let version = pins.i2cReadBuffer(i2cAddr, 4);
-        return `V${version[1]}.${version[2]}.${version[3]}`;
+        let version = pins.i2cReadBuffer(i2cAddr, 3);
+        return `V ${version[0]}.${version[1]}.${version[2]}`;
     }
 }

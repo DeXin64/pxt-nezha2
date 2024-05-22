@@ -1,8 +1,0 @@
-{
-  "neZha": "Functions to NeZha multifunctional expansion board by ELECFREAKS Co.,Ltd.",
-  "neZha.MotorList": "MotorList",
-  "neZha.ServoList": "ServoList",
-  "neZha.setMotorSpeed": "TODO: Set the speed of M1, M2, M3, M4 motor.",
-  "neZha.setMotorSpeed|param|motor": "M1, M2, M3, M4 motor , eg: MotorList.M1",
-  "neZha.setMotorSpeed|param|speed": "motor speed, eg: 100"
-}
