@@ -72,9 +72,9 @@ enum Unit {
     //%block="irch"
     irch = 2
 }
-//% weight=100 color=#008C8C block="NEHZAV2" blockId="NEHZAV2" icon="\uf48b"
+//% color=#ff0000  icon="\uf06d" block="NEZHA_V2" blockId="NEZHA_V2"
 const iicWaitTime = 0
-namespace NEHZAV2 {
+namespace NEZHA_V2 {
     let i2cAddr: number = 0x10;
     let setMotorCombination = 0;
     let getMotorCombinationSpeed = 0;
@@ -310,44 +310,44 @@ namespace NEHZAV2 {
             case HorizontalDirection.left:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 2:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 3:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 4:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 5:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 6:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
                         break
                 }
                 break
             case HorizontalDirection.right:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 2:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 3:
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 4:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 5:
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 6:
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
                         break
                 }
         }
@@ -355,56 +355,56 @@ namespace NEHZAV2 {
 
             switch (setMotorCombination) {
                 case 1:
-                    NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
                     break
                 case 2:
-                    NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
                     break
                 case 3:
-                    NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
                     break
                 case 4:
-                    NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
                     break
                 case 5:
-                    NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
                     break
                 case 6:
-                    NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
                     break
             }
         }
         else if (speed <= 0) {
             switch (setMotorCombination) {
                 case 1:
-                    NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
                     break
                 case 2:
-                    NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
                     break
                 case 3:
-                    NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
                     break
                 case 4:
-                    NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
                     break
                 case 5:
-                    NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
                     break
                 case 6:
-                    NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
-                    NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
+                    NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
                     break
             }
 
@@ -429,44 +429,44 @@ namespace NEHZAV2 {
             case 1:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 2:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 3:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 4:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 5:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 6:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
                         break
                 }
                 break
             case 2:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 2:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 3:
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 4:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 5:
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
                         break
                     case 6:
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, 45, SportsMode.degree)
                         break
                 }
         }
@@ -474,28 +474,28 @@ namespace NEHZAV2 {
         if (speed > 0) {
             switch (setMotorCombination) {
                 case 1:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.cw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.cw, speed)
                     break
                 case 2:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.cw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.cw, speed)
                     break
                 case 3:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.cw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.cw, speed)
                     break
                 case 4:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.cw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.cw, speed)
                     break
                 case 5:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.cw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.cw, speed)
                     break
                 case 6:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.cw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.cw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.cw, speed)
                     break
             }
 
@@ -503,28 +503,28 @@ namespace NEHZAV2 {
         else if (speed <= 0) {
             switch (setMotorCombination) {
                 case 1:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.ccw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.ccw, speed)
                     break
                 case 2:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.ccw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.ccw, speed)
                     break
                 case 3:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.ccw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M1, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.ccw, speed)
                     break
                 case 4:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.ccw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.ccw, speed)
                     break
                 case 5:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.ccw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M2, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.ccw, speed)
                     break
                 case 6:
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.ccw, speed)
-                    NEHZAV2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M3, MovementDirection.ccw, speed)
+                    NEZHA_V2.nezha2MotorSpeedCtrol(MotorPostion.M4, MovementDirection.ccw, speed)
                     break
             }
         }
@@ -543,28 +543,28 @@ namespace NEHZAV2 {
         //停止组合电机转动，基于电机关闭指令nezha2MotorStop
         switch (setMotorCombination) {
             case 1:
-                NEHZAV2.nezha2MotorStop(MotorPostion.M1)
-                NEHZAV2.nezha2MotorStop(MotorPostion.M2)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M1)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M2)
                 break
             case 2:
-                NEHZAV2.nezha2MotorStop(MotorPostion.M1)
-                NEHZAV2.nezha2MotorStop(MotorPostion.M3)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M1)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M3)
                 break
             case 3:
-                NEHZAV2.nezha2MotorStop(MotorPostion.M1)
-                NEHZAV2.nezha2MotorStop(MotorPostion.M4)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M1)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M4)
                 break
             case 4:
-                NEHZAV2.nezha2MotorStop(MotorPostion.M2)
-                NEHZAV2.nezha2MotorStop(MotorPostion.M3)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M2)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M3)
                 break
             case 5:
-                NEHZAV2.nezha2MotorStop(MotorPostion.M2)
-                NEHZAV2.nezha2MotorStop(MotorPostion.M4)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M2)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M4)
                 break
             case 6:
-                NEHZAV2.nezha2MotorStop(MotorPostion.M3)
-                NEHZAV2.nezha2MotorStop(MotorPostion.M4)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M3)
+                NEZHA_V2.nezha2MotorStop(MotorPostion.M4)
                 break
 
         }
@@ -587,28 +587,28 @@ namespace NEHZAV2 {
             case 1:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M1, MovementDirection.cw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M2, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M1, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M2, MovementDirection.cw)
                         break
                     case 2:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M1, MovementDirection.cw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M3, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M1, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M3, MovementDirection.cw)
                         break
                     case 3:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M1, MovementDirection.cw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M4, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M1, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M4, MovementDirection.cw)
                         break
                     case 4:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M2, MovementDirection.cw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M3, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M2, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M3, MovementDirection.cw)
                         break
                     case 5:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M2, MovementDirection.cw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M4, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M2, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M4, MovementDirection.cw)
                         break
                     case 6:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M3, MovementDirection.cw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M4, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M3, MovementDirection.cw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M4, MovementDirection.cw)
                         break
 
                 }
@@ -617,28 +617,28 @@ namespace NEHZAV2 {
             case 2:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M1, MovementDirection.ccw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M2, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M1, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M2, MovementDirection.ccw)
                         break
                     case 2:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M1, MovementDirection.ccw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M3, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M1, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M3, MovementDirection.ccw)
                         break
                     case 3:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M1, MovementDirection.ccw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M4, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M1, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M4, MovementDirection.ccw)
                         break
                     case 4:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M2, MovementDirection.ccw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M3, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M2, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M3, MovementDirection.ccw)
                         break
                     case 5:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M2, MovementDirection.ccw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M4, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M2, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M4, MovementDirection.ccw)
                         break
                     case 6:
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M3, MovementDirection.ccw)
-                        NEHZAV2.nezha2MotorStart(MotorPostion.M4, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M3, MovementDirection.ccw)
+                        NEZHA_V2.nezha2MotorStart(MotorPostion.M4, MovementDirection.ccw)
                         break
                 }
                 break
@@ -659,55 +659,55 @@ namespace NEHZAV2 {
             case VerticallDirection.up:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
                         break
                     case 2:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
                         break
                     case 3:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
                         break
                     case 4:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
                         break
                     case 5:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
                         break
                     case 6:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.cw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.cw, speed, MotorFunction)
                         break
                 }
             case VerticallDirection.dowm:
                 switch (setMotorCombination) {
                     case 1:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
                         break
                     case 2:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
                         break
                     case 3:
-                        NEHZAV2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M1, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
                         break
                     case 4:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
                         break
                     case 5:
-                        NEHZAV2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M2, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
                         break
                     case 6:
-                        NEHZAV2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
-                        NEHZAV2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M3, MovementDirection.ccw, speed, MotorFunction)
+                        NEZHA_V2.Motorspeed(MotorPostion.M4, MovementDirection.ccw, speed, MotorFunction)
                         break
                 }
 
