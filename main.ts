@@ -36,7 +36,6 @@ enum ServoMotionMode {
     ccw = 3
 }
 
-
 enum MotorCombination {
     //%block="A+B"
     ab = 1,
