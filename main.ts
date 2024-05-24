@@ -74,7 +74,7 @@ enum Unit {
 }
 
 const iicWaitTime = 0
-//% color=#ff0000  icon="\uf06d" block="NEZHA_V2" blockId="NEZHA_V2"
+//% color=#ff0011  icon="\uf06d" block="NEZHA_V2" blockId="NEZHA_V2"
 namespace NEZHA_V2 {
     let i2cAddr: number = 0x10;
     let setMotorCombination = 0;
