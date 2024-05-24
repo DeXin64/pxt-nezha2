@@ -1,7 +1,7 @@
 {
-    "name": "pxt-nezha",
-    "version": "1.0.49",
-    "description": "The micro:bit extension board Nezha(哪吒) with RJ11 connection port by ELECFREAKS Co.ltd",
+    "name": "pxt-nezha2",
+    "version": "1.0.50",
+    "description": "The micro:bit extension board Nezha2(哪吒2) with RJ11 connection port by ELECFREAKS Co.ltd",
     "dependencies": {
         "core": "*",
         "microphone": "*"
@@ -9,7 +9,7 @@
     "files": [
         "README.md",
         "main.ts",
-        "_locales/zh/pxt-nezha-strings.json"
+        "_locales/zh/pxt-nezha2-strings.json"
     ],
     "testFiles": [
         "test.ts"
