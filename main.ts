@@ -74,7 +74,7 @@ enum Unit {
 
 
 const iicWaitTime = 0
-//% color=#ff0011  icon="\uf06d" block="NEZHA_V2" blockId="NEZHA_V2"
+//% weight=100 color=#ff0011  icon="\uf06d" block="NEZHA_V2" blockId="NEZHA_V2"
 namespace NEZHA_V2 {
     let i2cAddr: number = 0x10;
     let setMotorCombination = 0;
@@ -91,9 +91,10 @@ namespace NEZHA_V2 {
     pins.i2cWriteBuffer(i2cAddr, buf);
 
     //% group="Basic functions"
+    //% weight=320
     //% block="set nehza %MotorPostion %MovementDirection %speed  %SportsMode"
     //% speed.min=0  speed.max=360
-    //% weight=400 // 减少宽度  
+    //% inlineInputMode=inline
     export function Motorspeed(motor: MotorPostion, direction: MovementDirection, speed: number, MotorFunction: SportsMode): void {
         let buf = pins.createBuffer(8)
         buf[0] = 0xFF;
@@ -173,6 +174,7 @@ namespace NEZHA_V2 {
     //% weight=140
     //% block="nehza-motor Crtol %MotorPostion speed %MovementDirection speed to %speed \\%"
     //% speed.min=0  speed.max=100
+
     export function nezha2MotorSpeedCtrol(motor: MotorPostion, direction: MovementDirection, speed: number): void {
         let buf = pins.createBuffer(8)
         buf[0] = 0xFF;
