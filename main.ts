@@ -100,6 +100,7 @@ namespace NEZHA_V2 {
     //% group="Basic functions"
     //% block="set nehza %MotorPostion %MovementDirection %speed  %SportsMode"
     //% speed.min=0  speed.max=360
+    //% inlineInputMode=inline
     //% weight=400 // 减少宽度  
     export function Motorspeed(motor: MotorPostion, direction: MovementDirection, speed: number, MotorFunction: SportsMode): void {
         let buf = pins.createBuffer(8)
