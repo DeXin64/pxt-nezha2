@@ -286,7 +286,7 @@ namespace NEZHA_V2 {
     /*
     组合积木块1：选择电机组合6种
     */
-    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft, motorRight: MotorPostionRight): void {
+    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft.A, motorRight: MotorPostionRight.B): void {
         motorLeftGlobal = motorLeft
         motorRightGlobal = motorRight
     }
