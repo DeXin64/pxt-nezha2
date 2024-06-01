@@ -47,10 +47,10 @@ enum MotorPostionLeft {
     Degree = 4
 }
 enum MotorPostionRight {
-    //%block="A"
-    A = 1,
     //%block="B"
     B = 2,
+    //%block="A"
+    A = 1,
     //%block="C"
     C = 3,
     //%block="D"
@@ -286,7 +286,7 @@ namespace NEZHA_V2 {
     /*
     组合积木块1：选择电机组合6种
     */
-    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft.A, motorRight: MotorPostionRight.B): void {
+    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft, motorRight: MotorPostionRight): void {
         motorLeftGlobal = motorLeft
         motorRightGlobal = motorRight
     }
@@ -308,7 +308,7 @@ namespace NEZHA_V2 {
     // /*
     // 组合积木块3：电机功能，设置组合电机，设置方向，设置运动模式，设置运动参数
     // 左上角，左下角，右上角，右下角
- 
+
     // 之前左边，右边是左边半圈（360度），右边半圈（360度）
     // 极限是-720 和 720,倍数4
     // */
