@@ -99,7 +99,6 @@ namespace NEZHA_V2 {
 
     //% group="Basic functions"
     //% block="set nehza %MotorPostion %MovementDirection %speed  %SportsMode"
-    //% speed.min=0  speed.max=360
     //% inlineInputMode=inline
     //% weight=407 // 减少宽度  
     export function Motorspeed(motor: MotorPostion, direction: MovementDirection, speed: number, MotorFunction: SportsMode): void {
@@ -239,26 +238,26 @@ namespace NEZHA_V2 {
         return (position % 3600) * 0.1;
     }
 
-    //% group="Basic functions"
-    //% weight=400
-    //%block="get %MotorPostion servo of speed (RPM)"
-    export function readServoAbsoluteSpeed(motor: MotorPostion): number {
-        let buf = pins.createBuffer(8)
-        buf[0] = 0xFF;
-        buf[1] = 0xF9;
+    // //% group="Basic functions"
+    // //% weight=400
+    // //%block="get %MotorPostion servo of speed (RPM)"
+    // export function readServoAbsoluteSpeed(motor: MotorPostion): number {
+    //     let buf = pins.createBuffer(8)
+    //     buf[0] = 0xFF;
+    //     buf[1] = 0xF9;
 
-        buf[2] = motor;
-        buf[3] = 0x00;
-        buf[4] = 0x47;
-        buf[5] = 0x00;
-        buf[6] = 0xF5;
-        buf[7] = 0x00;
-        pins.i2cWriteBuffer(i2cAddr, buf);
-        basic.pause(3);
-        let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
-        let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
-        return Math.floor(Servo1Speed * 0.0926);
-    }
+    //     buf[2] = motor;
+    //     buf[3] = 0x00;
+    //     buf[4] = 0x47;
+    //     buf[5] = 0x00;
+    //     buf[6] = 0xF5;
+    //     buf[7] = 0x00;
+    //     pins.i2cWriteBuffer(i2cAddr, buf);
+    //     basic.pause(3);
+    //     let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
+    //     let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
+    //     return Math.floor(Servo1Speed * 0.0926);
+    // }
 
     //% group="Basic functions"
     //% weight=399
@@ -287,7 +286,7 @@ namespace NEZHA_V2 {
     /*
     组合积木块1：选择电机组合6种
     */
-    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft=MotorPostionLeft.A, motorRight: MotorPostionRight=MotorPostionRight.B): void {
+    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft, motorRight: MotorPostionRight): void {
         motorLeftGlobal = motorLeft
         motorRightGlobal = motorRight
     }
@@ -306,80 +305,80 @@ namespace NEZHA_V2 {
 
     }
 
-    /*
-    组合积木块3：电机功能，设置组合电机，设置方向，设置运动模式，设置运动参数
-    左上角，左下角，右上角，右下角
- 
-    之前左边，右边是左边半圈（360度），右边半圈（360度）
-    极限是-720 和 720,倍数4
-    */
-    //% group="Application functions"
-    //% weight=408
-    //%block="Motor Move to %HorizontalDirection %horizontalDirection %SportsMode"
-    //% horizontalDirection.min=-180  horizontalDirection.max=180
-    export function CombinationMotorspeed(horizontalDirection: number, speed: number, MotorFunction: SportsMode): void {
-        if (speed > 0) {
-            // switch (horizontalDirection) {
-            //     case HorizontalDirection.left:
-            if (horizontalDirection > 0) {
-                Motorspeed(motorRightGlobal, MovementDirection.ccw, horizontalDirection * 4, SportsMode.degree)
-                basic.pause(500)
-                Motorspeed(motorLeftGlobal, MovementDirection.ccw, speed, MotorFunction)
-                Motorspeed(motorRightGlobal, MovementDirection.cw, speed, MotorFunction)
-            }
-            else {
-                Motorspeed(motorLeftGlobal, MovementDirection.cw, Math.abs(horizontalDirection) * 4, SportsMode.degree)
-                basic.pause(500)
-                Motorspeed(motorLeftGlobal, MovementDirection.ccw, speed, MotorFunction)
-                Motorspeed(motorRightGlobal, MovementDirection.cw, speed, MotorFunction)
-            }
-        }
+    // /*
+    // 组合积木块3：电机功能，设置组合电机，设置方向，设置运动模式，设置运动参数
+    // 左上角，左下角，右上角，右下角
 
-        else {
-            if (horizontalDirection > 0) {
-                Motorspeed(motorRightGlobal, MovementDirection.ccw, horizontalDirection * 4, SportsMode.degree)
-                basic.pause(500)
-                Motorspeed(motorLeftGlobal, MovementDirection.cw, -(speed), MotorFunction)
-                Motorspeed(motorRightGlobal, MovementDirection.ccw, -(speed), MotorFunction)
-            }
-            else {
-                Motorspeed(motorLeftGlobal, MovementDirection.cw, Math.abs(horizontalDirection) * 4, SportsMode.degree)
-                basic.pause(500)
-                Motorspeed(motorLeftGlobal, MovementDirection.cw, -(speed), MotorFunction)
-                Motorspeed(motorRightGlobal, MovementDirection.ccw, -(speed), MotorFunction)
+    // 之前左边，右边是左边半圈（360度），右边半圈（360度）
+    // 极限是-720 和 720,倍数4
+    // */
+    // //% group="Application functions"
+    // //% weight=408
+    // //%block="Motor Move to %HorizontalDirection %horizontalDirection %SportsMode"
+    // //% horizontalDirection.min=-180  horizontalDirection.max=180
+    // export function CombinationMotorspeed(horizontalDirection: number, speed: number, MotorFunction: SportsMode): void {
+    //     if (speed > 0) {
+    //         // switch (horizontalDirection) {
+    //         //     case HorizontalDirection.left:
+    //         if (horizontalDirection > 0) {
+    //             Motorspeed(motorRightGlobal, MovementDirection.ccw, horizontalDirection * 4, SportsMode.degree)
+    //             basic.pause(500)
+    //             Motorspeed(motorLeftGlobal, MovementDirection.ccw, speed, MotorFunction)
+    //             Motorspeed(motorRightGlobal, MovementDirection.cw, speed, MotorFunction)
+    //         }
+    //         else {
+    //             Motorspeed(motorLeftGlobal, MovementDirection.cw, Math.abs(horizontalDirection) * 4, SportsMode.degree)
+    //             basic.pause(500)
+    //             Motorspeed(motorLeftGlobal, MovementDirection.ccw, speed, MotorFunction)
+    //             Motorspeed(motorRightGlobal, MovementDirection.cw, speed, MotorFunction)
+    //         }
+    //     }
 
-            }
-        }
-    }
+    //     else {
+    //         if (horizontalDirection > 0) {
+    //             Motorspeed(motorRightGlobal, MovementDirection.ccw, horizontalDirection * 4, SportsMode.degree)
+    //             basic.pause(500)
+    //             Motorspeed(motorLeftGlobal, MovementDirection.cw, -(speed), MotorFunction)
+    //             Motorspeed(motorRightGlobal, MovementDirection.ccw, -(speed), MotorFunction)
+    //         }
+    //         else {
+    //             Motorspeed(motorLeftGlobal, MovementDirection.cw, Math.abs(horizontalDirection) * 4, SportsMode.degree)
+    //             basic.pause(500)
+    //             Motorspeed(motorLeftGlobal, MovementDirection.cw, -(speed), MotorFunction)
+    //             Motorspeed(motorRightGlobal, MovementDirection.ccw, -(speed), MotorFunction)
+
+    //         }
+    //     }
+    // }
 
 
 
-    /*
-    组合积木块4：舵机功能，设置组合电机，设置水平方向，设置运动参数
-    左上角，左下角，右上角，右下角
-    */
-    //% group="Application functions"
-    //% weight=407
-    //%block="Servo Move to %horizontalDirection %speed"
-    //% horizontalDirection.min=-180  horizontalDirection.max=180
+    // /*
+    // 组合积木块4：舵机功能，设置组合电机，设置水平方向，设置运动参数
+    // 左上角，左下角，右上角，右下角
+    // */
+    // //% group="Application functions"
+    // //% weight=407
+    // //%block="Servo Move to %horizontalDirection %speed"
+    // //% horizontalDirection.min=-180  horizontalDirection.max=180
 
-    export function CombinationServoSpeed(horizontalDirection: number): void {
-        //左上角，左下角，右上角，右下角,数值通过speed大小来进行判断上角(cw)和下角(ccw)
-        //缺少前进的单位
-        if (horizontalDirection > 0) {
-            Motorspeed(motorRightGlobal, MovementDirection.ccw, horizontalDirection * 4, SportsMode.degree)
-            basic.pause(500)
-            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, 50)
-            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, 50)
-        }
-        else {
-            Motorspeed(motorLeftGlobal, MovementDirection.cw, Math.abs(horizontalDirection) * 4, SportsMode.degree)
-            basic.pause(500)
-            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, 50)
-            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, 50)
-        }
+    // export function CombinationServoSpeed(horizontalDirection: number): void {
+    //     //左上角，左下角，右上角，右下角,数值通过speed大小来进行判断上角(cw)和下角(ccw)
+    //     //缺少前进的单位
+    //     if (horizontalDirection > 0) {
+    //         Motorspeed(motorRightGlobal, MovementDirection.ccw, horizontalDirection * 4, SportsMode.degree)
+    //         basic.pause(500)
+    //         nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, 50)
+    //         nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, 50)
+    //     }
+    //     else {
+    //         Motorspeed(motorLeftGlobal, MovementDirection.cw, Math.abs(horizontalDirection) * 4, SportsMode.degree)
+    //         basic.pause(500)
+    //         nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, 50)
+    //         nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, 50)
+    //     }
 
-    }
+    // }
 
 
 
@@ -414,67 +413,63 @@ namespace NEZHA_V2 {
         }
 
     }
-    /*
-    组合积木块7：组合舵机垂直方向运动（一直运动）
-    */
-    //% group="Application functions"
-    //% weight=404
-    //%block="Combination Motor Move to %VerticallDirection %speed %SportsMode "
-    //% speed.min=0  speed.max=360
-    export function CombinationServoVerticallDirectionMove(verticallDirection: VerticallDirection, speed: number, MotorFunction: SportsMode): void {
-        let ServoAbsolutePostion: number
-        //组合电机使用指令圈度秒
-        switch (verticallDirection) {
-            case VerticallDirection.up:
-                Motorspeed(motorLeftGlobal, MovementDirection.cw, speed, MotorFunction)
-                Motorspeed(motorRightGlobal, MovementDirection.ccw, speed, MotorFunction)
-                break
-            case VerticallDirection.dowm:
-                Motorspeed(motorLeftGlobal, MovementDirection.ccw, speed, MotorFunction)
-                Motorspeed(motorRightGlobal, MovementDirection.cw, speed, MotorFunction)
-                break
-        }
+    // /*
+    // 组合积木块7：组合舵机垂直方向运动（一直运动）
+    // */
+    // //% group="Application functions"
+    // //% weight=404
+    // //%block="Combination Motor Move to %VerticallDirection %speed %SportsMode "
+    // //% speed.min=0  speed.max=360
+    // export function CombinationServoVerticallDirectionMove(verticallDirection: VerticallDirection, speed: number, MotorFunction: SportsMode): void {
+    //     let ServoAbsolutePostion: number
+    //     //组合电机使用指令圈度秒
+    //     switch (verticallDirection) {
+    //         case VerticallDirection.up:
+    //             Motorspeed(motorLeftGlobal, MovementDirection.cw, speed, MotorFunction)
+    //             Motorspeed(motorRightGlobal, MovementDirection.ccw, speed, MotorFunction)
+    //             break
+    //         case VerticallDirection.dowm:
+    //             Motorspeed(motorLeftGlobal, MovementDirection.ccw, speed, MotorFunction)
+    //             Motorspeed(motorRightGlobal, MovementDirection.cw, speed, MotorFunction)
+    //             break
+    //     }
 
-
-
-
-
-    }
+    // }
     // let distanceroundCm
     // let distanceroundIrch
-    /*
-    组合积木块8：将电机旋转一圈设置为（N）（厘米）
-    */
-    //% group="Application functions"
-    //% weight=403
-    //%block="Set the motor to rotate one revolution to %far %Unit"
-    export function SetMotorOneRotateRevolution(far: number, unit: Unit): void {
-        let ServoAbsolutePostion: number
+    // /*
+    // 组合积木块8：将电机旋转一圈设置为（N）（厘米）
+    // */
+    // //% group="Application functions"
+    // //% weight=403
+    // //%block="Set the motor to rotate one revolution to %far %Unit"
+    // export function SetMotorOneRotateRevolution(far: number, unit: Unit): void {
+    //     let ServoAbsolutePostion: number
 
-    }
+    // }
 
-    /*
-    组合积木块9：组合舵机垂直方向运动（一直运动）
-    */
-    //% group="Application functions"
-    //% weight=402
-    //%block="Set the left wheel of %speedleft and the right wheel of %speedright "
-    //% speedleft.min=-100  speedleft.max=100 speedright.min=-100  speedright.max=100
-    export function setSpeedfLeftRightWheel(speedleft: number, speedright: number): void {
-        if (speedleft > 0) {
-            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, speedleft)
-        }
-        else {
-            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, Math.abs(speedleft))
-        }
-        if (speedright > 0) {
-            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, speedright)
-        }
-        else {
-            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, Math.abs(speedright))
-        }
+    // /*
+    // 组合积木块9：组合舵机垂直方向运动（一直运动）
+    // */
+    // //% group="Application functions"
+    // //% weight=402
+    // //%block="Set the left wheel of %speedleft and the right wheel of %speedright "
+    // //% speedleft.min=-100  speedleft.max=100 speedright.min=-100  speedright.max=100
+    // export function setSpeedfLeftRightWheel(speedleft: number, speedright: number): void {
+    //     if (speedleft > 0) {
+    //         nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, speedleft)
+    //     }
+    //     else {
+    //         nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, Math.abs(speedleft))
+    //     }
+    //     if (speedright > 0) {
+    //         nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, speedright)
+    //     }
+    //     else {
+    //         nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, Math.abs(speedright))
+    //     }
 
-    }
+    // }
 
     //% group="export functions"
     //% weight=320
