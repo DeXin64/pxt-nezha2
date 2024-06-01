@@ -44,7 +44,7 @@ enum MotorPostionLeft {
     //%block="C"
     C = 3,
     //%block="D"
-    Degree = 4
+    D = 4
 }
 enum MotorPostionRight {
     //%block="B"
@@ -54,7 +54,7 @@ enum MotorPostionRight {
     //%block="C"
     C = 3,
     //%block="D"
-    Degree = 4
+    D = 4
 }
 enum HorizontalDirection {
     //%block="left"
@@ -286,7 +286,7 @@ namespace NEZHA_V2 {
     /*
     组合积木块1：选择电机组合6种
     */
-    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft, motorRight: MotorPostionRight): void {
+    export function RunningMotorToeSpeed(motorLeft: MotorPostionLeft=MotorPostionLeft.A, motorRight: MotorPostionRight=MotorPostionRight.B): void {
         motorLeftGlobal = motorLeft
         motorRightGlobal = motorRight
     }
