@@ -192,7 +192,7 @@ namespace NEZHA_V2 {
             buf[3] = MovementDirection.ccw;
         }
         buf[4] = 0x60;
-        buf[5] = speed;
+        buf[5] = Math.abs(speed);
         buf[6] = 0xF5;
         buf[7] = 0x00;
         pins.i2cWriteBuffer(i2cAddr, buf);
