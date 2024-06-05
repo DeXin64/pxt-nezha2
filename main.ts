@@ -448,28 +448,28 @@ namespace NEZHA_V2 {
 
     // }
 
-    // /*
-    // 组合积木块9：组合舵机垂直方向运动（一直运动）
-    // */
-    // //% group="Application functions"
-    // //% weight=402
-    // //%block="Set the left wheel of %speedleft and the right wheel of %speedright "
-    // //% speedleft.min=-100  speedleft.max=100 speedright.min=-100  speedright.max=100
-    // export function setSpeedfLeftRightWheel(speedleft: number, speedright: number): void {
-    //     if (speedleft > 0) {
-    //         nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, speedleft)
-    //     }
-    //     else {
-    //         nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, Math.abs(speedleft))
-    //     }
-    //     if (speedright > 0) {
-    //         nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, speedright)
-    //     }
-    //     else {
-    //         nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, Math.abs(speedright))
-    //     }
+    /*
+    组合积木块9：组合舵机垂直方向运动（一直运动）
+    */
+    //% group="Application functions"
+    //% weight=402
+    //%block="Set the left wheel of %speedleft and the right wheel of %speedright "
+    //% speedleft.min=-100  speedleft.max=100 speedright.min=-100  speedright.max=100
+    export function setSpeedfLeftRightWheel(speedleft: number, speedright: number): void {
+        if (speedleft > 0) {
+            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, speedleft)
+        }
+        else {
+            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, Math.abs(speedleft))
+        }
+        if (speedright > 0) {
+            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, speedright)
+        }
+        else {
+            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, Math.abs(speedright))
+        }
 
-    // }
+    }
 
     //% group="export functions"
     //% weight=320
