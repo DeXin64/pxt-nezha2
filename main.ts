@@ -238,26 +238,26 @@ namespace NEZHA_V2 {
         return (position % 3600) * 0.1;
     }
 
-    // //% group="Basic functions"
-    // //% weight=400
-    // //%block="get %MotorPostion servo of speed (RPM)"
-    // export function readServoAbsoluteSpeed(motor: MotorPostion): number {
-    //     let buf = pins.createBuffer(8)
-    //     buf[0] = 0xFF;
-    //     buf[1] = 0xF9;
+    //% group="Basic functions"
+    //% weight=400
+    //%block="get %MotorPostion servo of speed (RPM)"
+    export function readServoAbsoluteSpeed(motor: MotorPostion): number {
+        let buf = pins.createBuffer(8)
+        buf[0] = 0xFF;
+        buf[1] = 0xF9;
 
-    //     buf[2] = motor;
-    //     buf[3] = 0x00;
-    //     buf[4] = 0x47;
-    //     buf[5] = 0x00;
-    //     buf[6] = 0xF5;
-    //     buf[7] = 0x00;
-    //     pins.i2cWriteBuffer(i2cAddr, buf);
-    //     basic.pause(3);
-    //     let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
-    //     let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
-    //     return Math.floor(Servo1Speed * 0.0926);
-    // }
+        buf[2] = motor;
+        buf[3] = 0x00;
+        buf[4] = 0x47;
+        buf[5] = 0x00;
+        buf[6] = 0xF5;
+        buf[7] = 0x00;
+        pins.i2cWriteBuffer(i2cAddr, buf);
+        basic.pause(3);
+        let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
+        let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
+        return Math.floor(Servo1Speed * 0.0926);
+    }
 
     //% group="Basic functions"
     //% weight=399
