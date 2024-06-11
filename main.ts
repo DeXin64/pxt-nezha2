@@ -18,20 +18,20 @@ enum MovementDirection {
 }
 
 enum SportsMode {
-    //%block="circle"
-    circle = 1,
     //%block="degree"
     degree = 2,
+    //%block="circle"
+    circle = 1,
     //%block="second"
     second = 3
 }
 
 
 enum ServoMotionMode {
-    //%block="Shortest path"
-    ShortestPath = 1,
     //%block="cw"
     cw = 2,
+    //%block="Shortest path"
+    ShortestPath = 1,
     //%block="ccw"
     ccw = 3
 }
