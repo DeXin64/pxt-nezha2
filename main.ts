@@ -401,8 +401,8 @@ namespace NEZHA_V2 {
     //% weight=405
     //%block="Combination Motor Move to %VerticallDirection"
     //%block="Move %VerticallDirection"
-  
 
+    
     export function CombinationMotorVerticallDirectionMove(verticallDirection: VerticallDirection): void {
         switch (verticallDirection) {
             case VerticallDirection.up:
