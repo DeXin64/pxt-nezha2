@@ -21,7 +21,7 @@
     "NEZHA_V2.goToAbsolutePosition|block": " 设置%MotorPostion 以 %ServoMotionMode 转至角度 %target_angle",
     "NEZHA_V2.nezha2MotorStart|block": " 设置%MotorPostion 以%MovementDirection 启动电机",
     "NEZHA_V2.nezha2MotorStop|block": "设置%MotorPostion 关闭电机",
-    "NEZHA_V2.nezha2MotorSpeedCtrolExport|block": "将 %MotorPostion 速度设置为  %MovementDirection %speed \\%",
+    "NEZHA_V2.nezha2MotorSpeedCtrolExport|block": "将 %MotorPostion 速度设置为 %speed \\%",
     "NEZHA_V2.readServoAbsolutePostion|block": "%MotorPostion 角度值",
     "NEZHA_V2.readServoAbsoluteSpeed|block": "%MotorPostion 速度 (圈/秒)",
     "NEZHA_V2.servoPostionReset|block": "设置电机%MotorPostion归零",

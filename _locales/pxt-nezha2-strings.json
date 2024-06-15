@@ -21,7 +21,7 @@
     "NEZHA_V2.goToAbsolutePosition|block": "Set %MotorPostion to rotate %ServoMotionMode at angle %target_angle",
     "NEZHA_V2.nezha2MotorStart|block": "Setting %MotorPostion to start the motor in %MovementDirection",
     "NEZHA_V2.nezha2MotorStop|block": "Set %MotorPostion shutting down the motor",
-    "NEZHA_V2.nezha2MotorSpeedCtrolExport|block": "Set %MotorPostion speed to %speed\\%",
+    "NEZHA_V2.nezha2MotorSpeedCtrolExport|block": "Set %MotorPostion speed to %speed \\%",
     "NEZHA_V2.readServoAbsolutePostion|block": "%MotorPostion Angular value",
     "NEZHA_V2.readServoAbsoluteSpeed|block": "%MotorPostion Speed (laps/sec)",
     "NEZHA_V2.servoPostionReset|block": "Set motor %MotorPostion to zero",
