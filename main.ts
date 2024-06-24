@@ -467,10 +467,10 @@ namespace NEZHA_V2 {
             nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, speedleft)
         }
         if (speedright > 0) {
-            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, Math.abs(speedright))
+            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, speedright)
         }
         else {
-            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, speedright)
+            nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.ccw, Math.abs(speedright))
         }
 
     }
