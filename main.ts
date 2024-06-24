@@ -461,10 +461,10 @@ namespace NEZHA_V2 {
     //% speedleft.min=-100  speedleft.max=100 speedright.min=-100  speedright.max=100
     export function setSpeedfLeftRightWheel(speedleft: number, speedright: number): void {
         if (speedleft > 0) {
-            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, Math.abs(speedleft))
+            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.ccw, speedleft)
         }
         else {
-            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, speedleft)
+            nezha2MotorSpeedCtrol(motorLeftGlobal, MovementDirection.cw, Math.abs(speedleft))
         }
         if (speedright > 0) {
             nezha2MotorSpeedCtrol(motorRightGlobal, MovementDirection.cw, speedright)
