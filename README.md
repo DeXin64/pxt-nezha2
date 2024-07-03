@@ -4,27 +4,25 @@
 
 ![](/nezha.png/)
 
-This extension is designed to programme and drive the NeZha micro:bit expansion board, You can [get NeZha from the Elecfreaks store](https://www.elecfreaks.com/store/nezha-breakout-board-for-micro-bit.html)
+This extension is designed to programme and drive the NeZha micro:bit expansion board, You can [get NeZhaV2 from the Elecfreaks store](https://shop.elecfreaks.com/products/nezha-breakout-board-v2)
 
 ## Code Example
 ```JavaScript
 
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+    NEZHA_V2.servoPostionReset(MotorPostion.M1)
+})
 input.onButtonPressed(Button.A, function () {
-    neZha.setMotorSpeed(neZha.MotorList.M1, 100)
-    neZha.setMotorSpeed(neZha.MotorList.M2, 100)
-    neZha.setMotorSpeed(neZha.MotorList.M3, 100)
-    neZha.setMotorSpeed(neZha.MotorList.M4, 100)
+    NEZHA_V2.nezha2MotorStart(MotorPostion.M1, MovementDirection.cw)
+    NEZHA_V2.nezha2MotorStart(MotorPostion.M2, MovementDirection.cw)
+    NEZHA_V2.nezha2MotorStart(MotorPostion.M3, MovementDirection.cw)
+    NEZHA_V2.nezha2MotorStart(MotorPostion.M4, MovementDirection.cw)
 })
 input.onButtonPressed(Button.B, function () {
-    neZha.setServoAngel(neZha.ServoList.S1, 119)
-    neZha.setServoSpeed(neZha.ServoList.S2, -58)
+    NEZHA_V2.goToAbsolutePosition(MotorPostion.M1, ServoMotionMode.cw, 0)
+    NEZHA_V2.goToAbsolutePosition(MotorPostion.M2, ServoMotionMode.cw, 0)
 })
-input.onButtonPressed(Button.AB, function () {
-    neZha.stopAllMotor()
-})
-basic.forever(function () {
-	
-})
+
 
 ```
 ## Supported targets
