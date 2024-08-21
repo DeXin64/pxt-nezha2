@@ -257,7 +257,7 @@ namespace NEZHA_V2 {
         basic.pause(3);
         let ServoSpeed1Arr = pins.i2cReadBuffer(i2cAddr, 2);
         let Servo1Speed = (ServoSpeed1Arr[1] << 8) | (ServoSpeed1Arr[0]);
-        return Math.floor(Servo1Speed * 0.0926);
+        return Math.floor(Servo1Speed/6 );
     }
 
     //% group="Basic functions"
