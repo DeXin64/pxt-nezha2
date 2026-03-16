@@ -55,6 +55,10 @@ input.onButtonPressed(Button.B, function () {
 
 Delve into advanced functionalities like motor speed regulation and sensor data retrieval. For detailed examples and instructions, visit our [online tutorials](https://wiki.elecfreaks.com/en/microbit/expansion-board/nezha-v2/).
 
+## Examples and New Features
+
+For implementation details of blocks and examples of new features, please check the files in the "examples" directory.
+
 ## Supported Targets
 
 - PXT/micro:bit

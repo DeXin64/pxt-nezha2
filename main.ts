@@ -79,6 +79,8 @@ namespace nezhaV2 {
     let motorLeftGlobal = 0
     let motorRightGlobal = 0
     let degreeToDistance = 0
+    let wheelBaseDistance = 0
+    let comboRotateCalibrationFactor = 1.0
 
     export function delayMs(ms: number): void {
         let time = input.runningTime() + ms
@@ -350,6 +352,20 @@ namespace nezhaV2 {
     }
 
     //% group="Application functions"
+    //% weight=402
+    //%block="set wheelbase (distance between wheels) to %value %unit"
+    export function setWheelBase(value: number, unit: Uint): void {
+        if(value < 0){
+            value = 0;
+        }
+        if (unit == Uint.inch) {
+            wheelBaseDistance = value * 2.54
+        }else{
+            wheelBaseDistance = value
+        }
+    }
+
+    //% group="Application functions"
     //% weight=403
     //%block="Combination Motor Move at %speed to %direction %value %uint "
     //% speed.min=0  speed.max=100
@@ -397,6 +413,45 @@ namespace nezhaV2 {
     export function comboStart(speed_l: number, speed_r: number): void {
         start(motorLeftGlobal, -speed_l);
         start(motorRightGlobal, speed_r);
+    }
+
+    //% group="Application functions"
+    //% weight=400
+    //% block="combination Motor rotate by %angle degrees at %speed\\%"
+    //% speed.min=0  speed.max=100
+    export function comboRotate(angle: number, speed: number): void {
+        if (speed <= 0 || angle == 0 || wheelBaseDistance <= 0 || degreeToDistance <= 0) {
+            return;
+        }
+        
+        let rotationDirection = angle > 0 ? MovementDirection.CW : MovementDirection.CCW;
+        let absoluteAngle = Math.abs(angle);
+        
+        let radians = absoluteAngle * Math.PI / 180;
+        let arcDistance = radians * (wheelBaseDistance / 2);
+        let motorDegrees = (arcDistance * 360 * comboRotateCalibrationFactor) / degreeToDistance;
+        
+        setServoSpeed(speed);
+        
+        if (rotationDirection == MovementDirection.CW) {
+            __move(motorLeftGlobal, MovementDirection.CCW, motorDegrees, SportsMode.Degree);
+            __move(motorRightGlobal, MovementDirection.CCW, motorDegrees, SportsMode.Degree);
+        } else {
+            __move(motorLeftGlobal, MovementDirection.CW, motorDegrees, SportsMode.Degree);
+            __move(motorRightGlobal, MovementDirection.CW, motorDegrees, SportsMode.Degree);
+        }
+        
+        motorDelay(motorDegrees, SportsMode.Degree);
+    }
+
+    //% group="Application functions"
+    //% weight=401
+    //% block="set combo rotate calibration factor to %factor"
+    export function setComboRotateCalibration(factor: number): void {
+        if (factor <= 0) {
+            factor = 1.0;
+        }
+        comboRotateCalibrationFactor = factor;
     }
 
     //% group="export functions"
